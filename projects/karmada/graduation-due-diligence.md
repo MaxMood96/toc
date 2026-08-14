@@ -12,7 +12,7 @@ Chad Beaudin and Ahmed Bebars conducted the due diligence of Karmada, which appl
 
 ### Adoption Evaluation
 
-The adopter interviews reflect a project in production use and at scale commensurate for graduation. Seven interviewees across two organizations (Bloomberg — 3 independent platform teams; Trip.com) confirmed production deployments managing multi-cluster workloads at significant scale. Bloomberg operates Karmada as a managed internal platform serving multiple tenant teams (GPU/HPC scheduling, streaming analytics, general compute), with the first tenant achieving production maturity in March 2026. Trip.com has run Karmada for 3 years in production managing 40 clusters, 10,000 applications, and 1 million cores. All adopters emphasized Karmada's Kubernetes-native API compatibility (zero application-side changes required) and collaborative community responsiveness, and stated they would find removal very difficult (1–2+ years). The interviews provide strong evidence of real-world production maturity across finance and travel industries, with both organizations maintaining project maintainers.
+The adopter interviews reflect a project in production use and at scale commensurate for graduation. Eight interviewees across three organizations (Bloomberg — 3 independent platform teams; Trip.com; DaoCloud) confirmed production deployments managing multi-cluster workloads at significant scale. Bloomberg operates Karmada as a managed internal platform serving multiple tenant teams (GPU/HPC scheduling, streaming analytics, general compute), with the first tenant achieving production maturity in March 2026. Trip.com has run Karmada for 3 years in production managing 40 clusters, 10,000 applications, and 1 million cores. DaoCloud has used Karmada for 4–5 years both internally and for approximately 20 customers, with deployments including GPU nodes for AI inference workloads. All adopters emphasized Karmada's Kubernetes-native API compatibility (zero application-side changes required) and collaborative community responsiveness, and stated they would find removal very difficult (1–2+ years). The interviews provide strong evidence of real-world production maturity across finance, travel, and cloud infrastructure industries, with all three organizations maintaining project maintainers.
 
 ### Final Assessment
 
@@ -270,18 +270,19 @@ N/A
 
 - [x] **Used in appropriate capacity by at least 3 independent + indirect/direct adopters, (these are not required to be in the publicly documented list of adopters)**
 
-  7 interviewees across 2 organizations (Bloomberg — 3 independent platform teams; Trip.com) confirmed production use at scale. Interviews conducted:
+  8 interviewees across 3 organizations (Bloomberg — 3 independent platform teams; Trip.com; DaoCloud) confirmed production use at scale. Interviews conducted:
 
   - Bloomberg — GPU/HPC scheduling team (production since mid-2024; multi-cluster GPU scheduling)
   - Bloomberg — Streaming platform team (production 2024; cross-cluster DR for stateful Apache Flink workloads; v1.17)
   - Bloomberg — Cloud Compute Services / managed Karmada platform (first tenant production March 2026; managed multi-cluster platform-as-a-service)
   - Trip.com — Multi-cluster orchestration (3 years in production; 40 clusters, 10K applications, 1M cores, 400K objects)
+  - DaoCloud — Multi-cloud platform provider (4–5 years; ~20 customers; internal use across ~5 clusters with hundreds of nodes)
 
   The project provided the TOC with a list of adopters for verification of use of the project at the level expected, i.e. production use for graduation.
 
 - [x] **TOC verification of adopters.**
 
-  Adopter interviews were conducted to verify production use at graduation-appropriate scale. Bloomberg (finance — 3 independent platform teams with distinct use cases) and Trip.com (travel — migrated from KubeFed) confirmed production deployments managing multi-cluster workloads at scale. All adopters reported removal would be very difficult (1–2+ years); both organizations have team members serving as project maintainers. All adopters evaluated alternatives (Armada, KubeFed, ClusterNet, MultiKueue, KubeFleet, Kubistella) and selected Karmada for its Kubernetes-native API, CRD support, and community responsiveness.
+  Adopter interviews were conducted to verify production use at graduation-appropriate scale. Bloomberg (finance — 3 independent platform teams with distinct use cases), Trip.com (travel — migrated from KubeFed), and DaoCloud (cloud infrastructure — multi-cloud platform provider serving ~20 customers) confirmed production deployments managing multi-cluster workloads at scale. All adopters reported removal would be very difficult (1–2+ years); all three organizations have team members serving as project maintainers. All adopters evaluated alternatives (Armada, KubeFed, ClusterNet, MultiKueue, KubeFleet, Kubistella) and selected Karmada for its Kubernetes-native API, CRD support, and community responsiveness.
 
 Refer to the Adoption portion of this document.
 
@@ -307,6 +308,18 @@ Trip.com has been using Karmada for 4 years (3 in production) for multi-cluster 
 
 Trip.com built a distributed multi-cluster HPA on Karmada's object contract layer and has migrated 300,000 stateless workloads across clusters. They maintain an internal fork based on v1.5.1 with approximately 10 internal releases per year, primarily for performance at scale — they have removed the Work object entirely from their fork to address performance issues as cluster count and object count grow. Trip.com has a maintainer on the project (Zach) and engages via GitHub and community groups. Removal would take more than 1–2 years.
 
+##### Adopter 3 — DaoCloud / Cloud Infrastructure (1 interviewee)
+
+DaoCloud has used Karmada for approximately 4–5 years, both internally and for customers. The primary motivations were multi-cloud automation capabilities — auto-replication, automated failover, and configuration overrides — while preserving the native Kubernetes user experience and tooling (including Argo CD). DaoCloud selected Karmada because it adds automation while maintaining familiar Kubernetes workflows, unlike alternatives that would change the user experience.
+
+DaoCloud has implemented Karmada for approximately 20 customers, with one customer running about 10 clusters in production. Internally, DaoCloud manages hundreds of nodes across roughly 5 clusters, including GPU nodes for AI inference and experimental workloads in a hybrid model. Currently running v1.18, DaoCloud follows a roughly 6-month product update cadence with a fix-forward model and no history of needed rollbacks.
+
+The primary challenge encountered is API version heterogeneity across customer clusters spanning recent to 5-year-old Kubernetes versions — Karmada must maintain consistent behavior across this spread. Documentation is detailed and useful beyond basic guides; DaoCloud noted a gap for industry-specific policies (e.g., financial sector) where generic examples are insufficient.
+
+DaoCloud is estimated as the second- or third-largest contributor to Karmada, providing features and fixes. The company has 2–3 maintainers who regularly join open-source project roadmap meetings. Automation prevents impractical manual orchestration at scale, with estimated manual effort savings ranging from 1 week to 1 year depending on the task.
+
+Karmada is on DaoCloud's critical path; removing it would be extremely difficult. DaoCloud would maintain an internal fork or equivalent rather than remove it. Desired improvements include cost-aware and region-aware workload placement for AI inference and training, and better support for mixing inference and training workloads across multiple regions/countries.
+
 ##### Cross-Interview Themes
 
 **Strengths cited by all adopters:**
@@ -315,12 +328,21 @@ Trip.com built a distributed multi-cluster HPA on Karmada's object contract laye
 - Collaborative, responsive community willing to co-develop features
 - Production-validated at scale by multiple large organizations
 - Full-time maintainers enabling fast bug fixes
+- Multi-cloud automation (auto-replication, failover, configuration overrides)
+- Stability, project quality, and release cadence consistent with Kubernetes norms
+- Community-driven, open roadmap where members can influence direction
 
 **Concerns cited by multiple adopters (non-blocking):**
 - Limited North American presence — timezone friction, KubeCon NA attendance, PR review speed
 - Performance at scale — Trip.com removed Work object; Bloomberg platform team needs scalability testing
 - No conformance test suite for platform teams to validate new versions
 - Slow review process for large community contributions
+- API version heterogeneity across clusters of varying ages (DaoCloud)
+- Documentation gap for industry-specific policies (e.g., financial sector)
+
+**Desired improvements:**
+- Cost-aware and region-aware workload placement for AI inference and training (DaoCloud)
+- Better support for mixing inference and training workloads across multiple regions/countries (DaoCloud)
 
 **Alternatives evaluated and rejected:**
 
