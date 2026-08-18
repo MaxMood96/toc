@@ -8,7 +8,7 @@
 
 ### Criteria Evaluation
 
-Chad Beaudin and Ahmed Bebars conducted the due diligence of Karmada, which applied for Graduation. The project has completed the criteria that show its maturity at Graduation. Noteworthy strengths include strong multi-org maintainer diversity (8 maintainers across 6 organizations with a documented rule that no single organization can hold more than 50% of the maintainer seats), a completed third-party security audit with all high/medium findings resolved, and a consistent 3-month release cadence. The following actions were provided to the project that were considered blocking but since resolved: the 2023 governance review identified a single CoC concern that has been rectified (now a single canonical CODE_OF_CONDUCT.md pointing to the CNCF CoC). The following action is considered blocking and must be resolved before graduation: OWNERS files must be updated to match MAINTAINERS.md - emeritus maintainers (@mrlihanbo, @carmark, @zoroyouxi, @lfbear) still have merge authority in OWNERS files, and 4 active maintainers (@warjiang, @CharlesQQ, @GitHubxsy, @wawa0210) are missing from the main repo's OWNERS approvers list. The following recommendations were provided to the project that are non-blocking in the TOC's assessment but should be completed to ensure continued viability: (1) continue work on automated certificate rotation to reduce operational burden at scale.
+Chad Beaudin and Ahmed Bebars conducted the due diligence of Karmada, which applied for Graduation. The project has completed the criteria that show its maturity at Graduation. Noteworthy strengths include strong multi-org maintainer diversity (8 maintainers across 6 organizations with a documented rule that no single organization can hold more than 50% of the maintainer seats), a completed third-party security audit with all high/medium findings resolved, and a consistent 3-month release cadence. The following actions were provided to the project that were considered blocking but since resolved: (1) the 2023 governance review identified a single CoC concern that has been rectified (now a single canonical CODE_OF_CONDUCT.md pointing to the CNCF CoC), and (2) OWNERS files have been synced with MAINTAINERS.md via [PR #7842](https://github.com/karmada-io/karmada/pull/7842). The following recommendations were provided to the project that are non-blocking in the TOC's assessment but should be completed to ensure continued viability: (1) continue work on automated certificate rotation to reduce operational burden at scale.
 
 ### Adoption Evaluation
 
@@ -16,7 +16,7 @@ The adopter interviews reflect a project in production use and at scale commensu
 
 ### Final Assessment
 
-Karmada has clearly matured since incubation (Dec 2023) with improved governance diversity, a completed security audit, strong adoption growth across industries, and a maintained release cadence. One blocking item remains: OWNERS files must be synced with MAINTAINERS.md before the TOC can proceed to a vote.
+The TOC has found the project to have satisfied the criteria for Graduation. Karmada has clearly matured since incubation (Dec 2023) with improved governance diversity, a completed security audit, strong adoption growth across industries, and a maintained release cadence. No blocking items remain.
 
 ### Criteria
 
@@ -55,7 +55,7 @@ Completion of this due diligence document, resolution of concerns raised, and pr
 
 A governance review was conducted in August 2023 and documented at [governance-review/2023-08-29.md](governance-review/2023-08-29.md). The review identified three must-fix items: inactive maintainers, conflicting OWNERS files, and conflicting Codes of Conduct. Since then, the CoC has been rectified to a single canonical document pointing to the CNCF CoC. The OWNERS file inconsistencies have been raised as a [comment on the DD issue](https://github.com/cncf/toc/issues/1572#issuecomment-4452003587) and should be resolved.
 
-The inactive maintainer issue has been addressed: the 4 maintainers flagged in 2023 (@mrlihanbo, @carmark, @zoroyouxi, @lfbear) have been moved to emeritus in MAINTAINERS.md. However, the OWNERS files have not been updated to match - all 4 emeritus maintainers still have merge authority in OWNERS files across repos (mrlihanbo in 4 files, lfbear in 2, carmark in 1, zoroyouxi in 1), and 4 active maintainers listed in MAINTAINERS.md (@warjiang, @CharlesQQ, @GitHubxsy, @wawa0210) are not in the main repo's OWNERS approvers list. This OWNERS/MAINTAINERS sync is blocking for graduation.
+The inactive maintainer issue has been addressed: the 4 maintainers flagged in 2023 (@mrlihanbo, @carmark, @zoroyouxi, @lfbear) have been moved to emeritus in MAINTAINERS.md. The OWNERS files have been synced to match via [PR #7842](https://github.com/karmada-io/karmada/pull/7842), removing emeritus maintainers and adding active maintainers who were missing.
 
 Overall the project has good governance and a diverse set of maintainers.
 
@@ -89,11 +89,11 @@ Overall the project has good governance and a diverse set of maintainers.
 
 - [x] **Document a complete maintainer lifecycle process (including roles, onboarding, offboarding, and emeritus status).**
 
-  Documented in the project governance. The offboarding/emeritus path has now been demonstrated - the 4 inactive members identified in the 2023 governance review have been moved to emeritus in MAINTAINERS.md. However, the OWNERS files must still be updated to remove these emeritus maintainers and add missing active maintainers (see Governance section above). This is tracked as a blocking item.
+  Documented in the project governance. The offboarding/emeritus path has now been demonstrated - the 4 inactive members identified in the 2023 governance review have been moved to emeritus in MAINTAINERS.md, and OWNERS files have been synced to match via [PR #7842](https://github.com/karmada-io/karmada/pull/7842).
 
 - [x] **Demonstrate usage of the maintainer lifecycle with outcomes, either through the addition or replacement of maintainers as project events have required.**
 
-  Addition demonstrated: Xiao Zhang added as maintainer. Offboarding now demonstrated: the 4 inactive maintainers identified in the 2023 governance review have been moved to emeritus in MAINTAINERS.md. OWNERS file sync is pending (tracked as a blocking item).
+  Addition demonstrated: Xiao Zhang added as maintainer. Offboarding demonstrated: the 4 inactive maintainers identified in the 2023 governance review have been moved to emeritus in MAINTAINERS.md and removed from OWNERS files via [PR #7842](https://github.com/karmada-io/karmada/pull/7842).
 
 - [x] **Document complete list of current maintainers, including names, contact information, domain of responsibility, and affiliation.**
 
@@ -109,7 +109,7 @@ Overall the project has good governance and a diverse set of maintainers.
 
 - [x] **Code and Doc ownership in Github and elsewhere matches documented governance roles.**
 
-  OWNERS files exist across repos but do not match MAINTAINERS.md. Emeritus maintainers retain approval rights in OWNERS files, and some active maintainers are missing. This must be resolved before graduation (tracked as a blocking item).
+  OWNERS files exist across repos and now match MAINTAINERS.md following [PR #7842](https://github.com/karmada-io/karmada/pull/7842).
 
 - [x] **Document adoption and adherence to the CNCF Code of Conduct or the project's CoC which is based off the CNCF CoC and not in conflict with it.**
 
