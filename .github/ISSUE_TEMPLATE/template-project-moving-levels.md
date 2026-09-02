@@ -3,7 +3,7 @@ name: Project Level Change Checklist
 about: This template outlines the steps to be completed when a project moves between maturity levels (e.g., Sandbox to Incubating).
 title: "[LEVEL CHANGE] $PROJECT"
 labels:
-- kind/dd
+- kind/moving-levels
 - toc
 ---
 

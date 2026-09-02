@@ -122,6 +122,9 @@ labels:
 - name: kind/meeting
   description: Item related to a meeting
   color: 8250DF
+- name: kind/moving-levels
+  description: Item related to a project moving between maturity levels
+  color: 8250DF
 - name: kind/publication
   description: Item related to a publication (blog, tech-paper, etc.)
   color: 8250DF
